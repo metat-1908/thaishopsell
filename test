@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ThaiShop - ตลาดซื้อขายธุรกิจ</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9f9f9;
+      color: #333;
+    }
+    header {
+      background: #0c3c78;
+      color: white;
+      padding: 1.5rem 2rem;
+      text-align: center;
+    }
+    main {
+      padding: 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .business-card {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    .business-card h3 {
+      margin: 0 0 0.5rem;
+      color: #0c3c78;
+    }
+    .business-card p {
+      margin: 0.25rem 0;
+    }
+    .chat-box {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      width: 300px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.15);
+      overflow: hidden;
+    }
+    .chat-header {
+      background: #0c3c78;
+      color: white;
+      padding: 0.75rem;
+      font-weight: bold;
+    }
+    .chat-body {
+      padding: 1rem;
+      max-height: 200px;
+      overflow-y: auto;
+      font-size: 0.9rem;
+    }
+    .chat-input {
+      display: flex;
+      border-top: 1px solid #eee;
+    }
+    .chat-input input {
+      flex: 1;
+      border: none;
+      padding: 0.75rem;
+      font-size: 1rem;
+    }
+    .chat-input button {
+      background: #0c3c78;
+      color: white;
+      border: none;
+      padding: 0 1rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ThaiShop</h1>
+    <p>ศูนย์รวมธุรกิจมือสอง พร้อมขาย เปลี่ยนเจ้าของทันที</p>
+  </header>
+  <main>
+    <div class="business-card">
+      <h3>ร้านกาแฟเล็ก ๆ พร้อมอุปกรณ์</h3>
+      <p>ทำเล: บางนา, กรุงเทพฯ</p>
+      <p>ราคา: 250,000 บาท</p>
+      <p>รายละเอียด: มีอุปกรณ์ครบ เปิดขายต่อได้ทันที</p>
+    </div>
+    <div class="business-card">
+      <h3>ธุรกิจเสื้อผ้าออนไลน์ มีฐานลูกค้า</h3>
+      <p>ทำเล: ออนไลน์</p>
+      <p>ราคา: 80,000 บาท</p>
+      <p>รายละเอียด: มี IG, เพจ, เว็บไซต์ พร้อมระบบจัดการออเดอร์</p>
+    </div>
+    <!-- เพิ่มรายการอื่น ๆ ได้ตามต้องการ -->
+  </main>
+
+  <div class="chat-box">
+    <div class="chat-header">💬 ถาม-ตอบเบื้องต้น</div>
+    <div class="chat-body" id="chatBody">
+      <p><strong>Bot:</strong> สวัสดีค่ะ ต้องการความช่วยเหลืออะไรบ้าง?</p>
+    </div>
+    <div class="chat-input">
+      <input type="text" id="userInput" placeholder="พิมพ์ข้อความ...">
+      <button onclick="sendMessage()">ส่ง</button>
+    </div>
+  </div>
+
+  <script>
+    function sendMessage() {
+      const input = document.getElementById("userInput");
+      const chatBody = document.getElementById("chatBody");
+      if (input.value.trim()) {
+        const userMsg = document.createElement("p");
+        userMsg.innerHTML = `<strong>คุณ:</strong> ${input.value}`;
+        chatBody.appendChild(userMsg);
+        setTimeout(() => {
+          const botMsg = document.createElement("p");
+          botMsg.innerHTML = `<strong>Bot:</strong> ขอบคุณค่ะ ทีมงานจะติดต่อกลับเร็ว ๆ นี้`;
+          chatBody.appendChild(botMsg);
+          chatBody.scrollTop = chatBody.scrollHeight;
+        }, 800);
+        input.value = "";
+      }
+    }
+  </script>
+</body>
+</html>
